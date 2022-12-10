@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
+import '../widgets/drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,9 +9,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          "Quick Taxy",
+          style: TextStyle(color: Colors.black, fontSize: 20),
+        ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.person),
+            icon: Icon(
+              Icons.person,
+              color: Colors.black,
+              
+              size: 30.0,
+              ),
             onPressed: () {
               Navigator.push(
                 context,
@@ -21,15 +32,12 @@ class HomeScreen extends StatelessWidget {
                     ),
                     actions: [
                       SignedOutAction((context) {
-                        Navigator.popUntil(context,(route) =>route.isFirst); //Back to the first screen
-                        /*Navigator.of(context).pop() is ok when only one permanent route is present and it sends you back to the
-                          SignIn Page but if there are more routes then you have to use other methods*/
+                        Navigator.popUntil(context,(route) =>route.isFirst); 
                       })
                     ],
                     children: [
                       const Divider(),
-                      Padding(padding: const EdgeInsets.all(2),
-                      child: Image.asset('assets/flutterfire_300x.png'),),
+                      
                     ],
                   ),
                 ),
@@ -37,20 +45,27 @@ class HomeScreen extends StatelessWidget {
             },
           ),
         ],
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
       body: Center(
         child: Column(
           children: [
-            Image.asset('assets/dash.png'),
-            Text(
-              'Hello! This is Birb 🐦',
-              style: Theme.of(context).textTheme.displaySmall,
+            Image.asset('assets/under.jpg'),
+            Padding(
+              padding: const EdgeInsets.all(28.0),
+              child: const Center(
+                child: Text(
+                  'We will make soon as possible',
+                  style: TextStyle(color: Colors.black,fontSize: 20)
+                ),
+              ),
             ),
             const SignOutButton(),
           ],
         ),
       ),
+      drawer: const MyDrawer(),
+    
     );
   }
 }

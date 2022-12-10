@@ -1,6 +1,9 @@
+import 'under.dart';
 import 'package:flutter/material.dart';
 
+import '../utilis/route.dart';
 import 'auth_gate.dart';
+import 'home.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -14,6 +17,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         /* light theme settings */
       ),
+      
       // darkTheme: ThemeData(
       //   brightness: Brightness.dark,
       //   /* dark theme settings */
@@ -23,6 +27,11 @@ class MyApp extends StatelessWidget {
          ThemeMode.light for light theme, 
          ThemeMode.dark for dark theme
       */
+      routes: {
+        MyRoute.homeroute: (context) => HomeScreen(),
+        
+        MyRoute.underroute: (context) => Under(),
+      },
       home: const AuthGate(),
     );
   }
