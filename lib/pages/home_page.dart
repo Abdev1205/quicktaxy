@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/drawer.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          "Quick Taxy",
+          'Quick Taxy',
           style: TextStyle(color: Colors.black, fontSize: 20),
         ),
       ),

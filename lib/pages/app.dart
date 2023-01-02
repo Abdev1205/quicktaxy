@@ -1,9 +1,10 @@
-import 'under.dart';
 import 'package:flutter/material.dart';
 
 import '../utilis/route.dart';
+import '../widgets/themes.dart';
 import 'auth_gate.dart';
 import 'home.dart';
+import 'under.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,26 +12,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My App',
-      debugShowCheckedModeBanner: true,
-      theme: ThemeData(
-        primarySwatch: Colors.amber,
-        brightness: Brightness.light,
-        /* light theme settings */
-      ),
-      
-      // darkTheme: ThemeData(
-      //   brightness: Brightness.dark,
-      //   /* dark theme settings */
-      // ),
-      themeMode: ThemeMode.system, 
-      /* ThemeMode.system to follow system theme, 
-         ThemeMode.light for light theme, 
-         ThemeMode.dark for dark theme
-      */
+      debugShowCheckedModeBanner: false,
+      theme: MyTheme.lightTheme(context),
+      // darkTheme: MyTheme.DarkTheme(context),
+      themeMode: ThemeMode.system,  
       routes: {
-        MyRoute.homeroute: (context) => HomeScreen(),
+        MyRoute.homeroute: (context) => const HomeScreen(),
         
-        MyRoute.underroute: (context) => Under(),
+        MyRoute.underroute: (context) => const Under(),
       },
       home: const AuthGate(),
     );

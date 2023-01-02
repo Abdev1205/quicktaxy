@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'pages/app.dart';
 import 'pages/firebase_options.dart';
 
+// ignore: todo
 // TODO(codelab user): Get API key
 const clientId = 'YOUR_CLIENT_ID';
 

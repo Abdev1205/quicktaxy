@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
 import '../widgets/drawer.dart';
@@ -11,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          "Quick Taxy",
+          'Quick Taxy',
           style: TextStyle(color: Colors.black, fontSize: 20),
         ),
         actions: [
@@ -35,8 +37,8 @@ class HomeScreen extends StatelessWidget {
                         Navigator.popUntil(context,(route) =>route.isFirst); 
                       })
                     ],
-                    children: [
-                      const Divider(),
+                    children: const [
+                      Divider(),
                       
                     ],
                   ),
