@@ -5,6 +5,7 @@ import '../widgets/themes.dart';
 import 'auth_gate.dart';
 import 'home.dart';
 import 'under.dart';
+import 'bid.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,11 +16,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: MyTheme.lightTheme(context),
       // darkTheme: MyTheme.DarkTheme(context),
-      themeMode: ThemeMode.system,  
+      themeMode: ThemeMode.system,
       routes: {
         MyRoute.homeroute: (context) => const HomeScreen(),
-        
         MyRoute.underroute: (context) => const Under(),
+        MyRoute.bidroute: (context) => const bid(),
       },
       home: const AuthGate(),
     );

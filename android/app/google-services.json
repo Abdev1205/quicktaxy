@@ -7,18 +7,62 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:558737185486:android:2abc9d91189a0d0f5ace9f",
+        "mobilesdk_app_id": "1:558737185486:android:20d408bc8938c75e5ace9f",
         "android_client_info": {
           "package_name": "com.example.complete"
         }
       },
       "oauth_client": [
         {
-          "client_id": "558737185486-qelr1vr16k71an0va57kbb5srdfdp9mh.apps.googleusercontent.com",
+          "client_id": "558737185486-0qh45d6q677i493cq6io7qen8ff4gv1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCMACrf9XmHoIiBeABE678vCDO8COrV_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "558737185486-0qh45d6q677i493cq6io7qen8ff4gv1d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "558737185486-c1qv0fmsbs9fccfgnignv6fl1vtrukif.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.quickTaxi"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558737185486:android:a37df80f22293a8c5ace9f",
+        "android_client_info": {
+          "package_name": "com.example.quick_taxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "558737185486-ecad4j1oap84mu6nl0r6gim8421cs9d9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.complete",
+            "package_name": "com.example.quick_taxi",
             "certificate_hash": "7d4fa33b532e6066ef58790ab89351e4688a1756"
+          }
+        },
+        {
+          "client_id": "558737185486-uj15eem70n8fdgqhvr9d15s0hvkk0ff1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quick_taxi",
+            "certificate_hash": "14caa91a325d758564705aedf8ddfe7fafd99ab0"
           }
         },
         {
@@ -39,10 +83,10 @@
               "client_type": 3
             },
             {
-              "client_id": "558737185486-go8s4isd7bkhl8inp51uscumq1ed1d8r.apps.googleusercontent.com",
+              "client_id": "558737185486-c1qv0fmsbs9fccfgnignv6fl1vtrukif.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.complete"
+                "bundle_id": "com.example.quickTaxi"
               }
             }
           ]
