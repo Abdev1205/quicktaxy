@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:complete/pages/postBid/post.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
@@ -34,47 +35,31 @@ TextEditingController phoneNoController = TextEditingController();
 TextEditingController upiIdController = TextEditingController();
 
 class _DriverProfileScreenState extends State<DriverProfileScreen> {
+   Widget widget1 = const Center(
+      child: LoadingIndicator(
+    size: 100,
+    borderWidth: 5,
+  ));
+
+  Future<bool> checkIfDocExists(
+      {required String collection, required String docId}) async {
+    // Get reference to Firestore collection
+    var collectionRef = FirebaseFirestore.instance.collection(collection);
+
+    var doc = await collectionRef.doc(docId).get();
+    return doc.exists;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          'Quick Taxy',
-          style: TextStyle(color: Colors.black, fontSize: 20),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.person,
-              color: Colors.black,
-              size: 30.0,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<ProfileScreen>(
-                  builder: (context) => ProfileScreen(
-                    appBar: AppBar(
-                      title: const Text('User Profile'),
-                    ),
-                    actions: [
-                      SignedOutAction((context) {
-                        Navigator.popUntil(context, (route) => route.isFirst);
-                      })
-                    ],
-                    children: const [
-                      Divider(),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
-        automaticallyImplyLeading: true,
-      ),
-      body: SingleChildScrollView(
+    Future<bool> docExists = checkIfDocExists(
+        collection: 'drivers', docId: FirebaseAuth.instance.currentUser!.uid);
+    docExists.then((exists) {
+      setState(() {
+        if (exists) {
+          widget1 = const post();
+        } else {
+          widget1 = SingleChildScrollView(
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -169,10 +154,11 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                           decoration: InputDecoration(
                             labelText: 'Enter Your UPI Id',
                             floatingLabelBehavior: FloatingLabelBehavior.auto,
-                          ),validator: (value) {
+                          ),
+                          validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please Enter Your UPI Id';
-                            } 
+                            }
                             return null;
                           },
                         ),
@@ -184,11 +170,13 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                   transform: Matrix4.translationValues(0.0, -60.0, 0.0),
                   child: ElevatedButton(
                     onPressed: () async {
-                       await drivers.add({
+                      await drivers
+                          .doc(FirebaseAuth.instance.currentUser!.uid)
+                          .set({
                         'driverId': user!.uid,
                         'name': user!.displayName,
-                        'email':user!.email,
-                        'profilePhoto':user!.photoURL,
+                        'email': user!.email,
+                        'profilePhoto': user!.photoURL,
                         'DLNo': licenceController.text,
                         'PhNo': phoneNoController.text,
                         'Seats': seatingCapacityController.text,
@@ -196,7 +184,6 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                         'UPIid': upiIdController.text,
                       }).then((value) => print('driver added'));
                       Navigator.pushNamed(context, MyRoute.bidroute);
-                  
                     },
                     child: Text(
                       'Upload',
@@ -217,7 +204,49 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
             ),
           ),
         ),
+      );
+        }
+      });
+    });
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'Quick Taxy',
+          style: TextStyle(color: Colors.black, fontSize: 20),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.person,
+              color: Colors.black,
+              size: 30.0,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<ProfileScreen>(
+                  builder: (context) => ProfileScreen(
+                    appBar: AppBar(
+                      title: const Text('User Profile'),
+                    ),
+                    actions: [
+                      SignedOutAction((context) {
+                        Navigator.popUntil(context, (route) => route.isFirst);
+                      })
+                    ],
+                    children: const [
+                      Divider(),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
+        automaticallyImplyLeading: true,
       ),
+      body: widget1,
       drawer: const MyDrawer(),
     );
   }

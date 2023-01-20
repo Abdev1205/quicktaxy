@@ -40,7 +40,7 @@ class _postState extends State<post> {
         return ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           children: snapshot.data!.docs
-              .map((DocumentSnapshot document) {
+              .map((document) {
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;
                 return MyCard(
@@ -56,43 +56,43 @@ class _postState extends State<post> {
       },
     );
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          'Quick Taxy',
-          style: TextStyle(color: Colors.black, fontSize: 20),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.person,
-              color: Colors.black,
-              size: 30.0,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<ProfileScreen>(
-                  builder: (context) => ProfileScreen(
-                    appBar: AppBar(
-                      title: const Text('User Profile'),
-                    ),
-                    actions: [
-                      SignedOutAction((context) {
-                        Navigator.popUntil(context, (route) => route.isFirst);
-                      })
-                    ],
-                    children: const [
-                      Divider(),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
-        automaticallyImplyLeading: true,
-      ),
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: const Text(
+      //     'Quick Taxy',
+      //     style: TextStyle(color: Colors.black, fontSize: 20),
+      //   ),
+      //   actions: [
+      //     IconButton(
+      //       icon: Icon(
+      //         Icons.person,
+      //         color: Colors.black,
+      //         size: 30.0,
+      //       ),
+      //       onPressed: () {
+      //         Navigator.push(
+      //           context,
+      //           MaterialPageRoute<ProfileScreen>(
+      //             builder: (context) => ProfileScreen(
+      //               appBar: AppBar(
+      //                 title: const Text('User Profile'),
+      //               ),
+      //               actions: [
+      //                 SignedOutAction((context) {
+      //                   Navigator.popUntil(context, (route) => route.isFirst);
+      //                 })
+      //               ],
+      //               children: const [
+      //                 Divider(),
+      //               ],
+      //             ),
+      //           ),
+      //         );
+      //       },
+      //     ),
+      //   ],
+      //   automaticallyImplyLeading: true,
+      // ),
       body: widget1,
     );
   }

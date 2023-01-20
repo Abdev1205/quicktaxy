@@ -23,8 +23,21 @@ class MyApp extends StatelessWidget {
         MyRoute.homeroute: (context) => const HomeScreen(),
         MyRoute.underroute: (context) => const Under(),
         MyRoute.bidroute: (context) => const post(),
+        MyRoute.bidingPageRoute:(context) => const PostBidPage(destination: 'dsfdf',shared: 'dfd',time: 'sds',passengerID: 'sdsds',)
         
       },
+      // onGenerateRoute: (settings) {
+      //   // If you push the PassArguments route
+      //   if (settings.name == PassArgumentsScreen.routeName) {
+      //     // Cast the arguments to the correct
+      //     // type: ScreenArguments.
+      //     final args = settings.arguments as ScreenArguments;
+
+      //     // Then, extract the required data from
+      //     // the arguments and pass the data to the
+      //     // correct screen.
+      //     return MaterialPageRoute(
+      //       builder: (context) {
       home: const AuthGate(),
     );
   }

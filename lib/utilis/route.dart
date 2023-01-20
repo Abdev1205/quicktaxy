@@ -4,4 +4,5 @@ class MyRoute {
   static String underroute = '/under';
   static String bidroute = '/bid';
   static String bidingPageRoute = '/bidpage';
+  
 }

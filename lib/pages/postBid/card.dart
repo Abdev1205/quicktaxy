@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../../utilis/route.dart';
+import 'bid.dart';
 
 class MyCard extends StatefulWidget {
   final String destination, passengerID, shared, time;
 
   const MyCard({
     super.key,
-    required this.destination,
-    required this.passengerID,
-    required this.shared,
-    required this.time,
+    required this.destination ,
+    required this.passengerID ,
+    required this.shared ,
+    required this.time  ,
   });
 
   @override
@@ -21,8 +22,9 @@ class UserData {
   final String time;
   final String shared;
   final String destination;
+  final String passengerID;
 
-  UserData(this.time, this.shared ,this.destination);
+  UserData(this.time, this.shared, this.destination, this.passengerID);
 }
 
 class _MyCardState extends State<MyCard> {
@@ -84,8 +86,19 @@ class _MyCardState extends State<MyCard> {
                                 minimumSize: const Size(150, 40), //////// HERE
                               ),
                               onPressed: () {
+                                // String time = widget.time.toString();
+                                // String shared = widget.shared.toString();
+                                // String destination =
+                                //     widget.destination.toString();
+                                // String passengerId = widget.passengerID;
                                 Navigator.pushNamed(
                                     context, MyRoute.bidingPageRoute);
+                                // return PostBidPage(
+                                //   destination: widget.destination,
+                                //   passengerID: widget.passengerID,
+                                //   time: widget.time,
+                                //   shared: widget.shared,
+                                // );
                               },
                               // ignore: prefer_const_constructors
                               child: Text(

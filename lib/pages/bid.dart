@@ -87,17 +87,17 @@ class _bid extends State<bid> {
                             // crossAxisAlignment: CrossAxisAlignment.end,
                             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text(
+                              const Text(
                                 'Bhopal Bus Stand',
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
-                              Text(
+                              const Text(
                                 'Shared',
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
-                              Text(
+                              const Text(
                                 '4:00 PM',
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
