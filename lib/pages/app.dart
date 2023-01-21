@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../utilis/route.dart';
 import '../widgets/themes.dart';
+import 'AllBid/allbid.dart';
 import 'auth_gate.dart';
 import 'home.dart';
 import 'postBid/bid.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
           MyRoute.homeroute: (context) => const HomeScreen(),
           MyRoute.underroute: (context) => const Under(),
           MyRoute.bidroute: (context) => const post(),
+          MyRoute.allBidPage:(context) => const AllBidPage(),
           // MyRoute.bidingPageRoute: (context) => const PostBidPage(
           //        destination: '' ,
           //       shared: 'dfd',

@@ -85,84 +85,89 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                 Container(
                   transform: Matrix4.translationValues(0.0, -80.0, 0.0),
                   child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          controller: licenceController,
-                          decoration: InputDecoration(
-                            labelText: 'Enter Your Driving Licence No',
-                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            controller: licenceController,
+                            decoration: InputDecoration(
+                              labelText: 'Enter Your Driving Licence No',
+                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter DL number';
+                              } else if (value.isNotEmpty) {
+                                value.toUpperCase();
+                              }
+                              return null;
+                            },
                           ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please enter DL number';
-                            } else if (value.isNotEmpty) {
-                              value.toUpperCase();
-                            }
-                            return null;
-                          },
-                        ),
-                        SizedBox(height: 10),
-                        TextFormField(
-                          controller: seatingCapacityController,
-                          decoration: InputDecoration(
-                            labelText: 'Enter Seating Capacity',
-                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          SizedBox(height: 10),
+                          TextFormField(
+                            controller: seatingCapacityController,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              labelText: 'Enter Seating Capacity',
+                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter Vehicle Seating Capacity';
+                              }
+                              return null;
+                            },
                           ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please enter Vehicle Seating Capacity';
-                            }
-                            return null;
-                          },
-                        ),
-                        SizedBox(height: 10),
-                        TextFormField(
-                          controller: vehicleNoController,
-                          decoration: InputDecoration(
-                            labelText: 'Enter Your Vehicle RC No',
-                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          SizedBox(height: 10),
+                          TextFormField(
+                            controller: vehicleNoController,
+                            decoration: InputDecoration(
+                              labelText: 'Enter Your Vehicle RC No',
+                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please Enter Your Vehicle RC No';
+                              } else if (value.isNotEmpty) {
+                                value.toUpperCase();
+                              }
+                              return null;
+                            },
                           ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please Enter Your Vehicle RC No';
-                            } else if (value.isNotEmpty) {
-                              value.toUpperCase();
-                            }
-                            return null;
-                          },
-                        ),
-                        SizedBox(height: 10),
-                        TextFormField(
-                          controller: phoneNoController,
-                          decoration: InputDecoration(
-                            labelText: 'Enter Your phone number',
-                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          SizedBox(height: 10),
+                          TextFormField(
+                            controller: phoneNoController,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              labelText: 'Enter Your phone number',
+                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter valid phone number';
+                              } else if (value.length != 10) {
+                                return 'Please enter 10 digit number';
+                              }
+                              return null;
+                            },
                           ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please enter valid phone number';
-                            } else if (value.length != 10) {
-                              return 'Please enter 10 digit number';
-                            }
-                            return null;
-                          },
-                        ),
-                        SizedBox(height: 10),
-                        TextFormField(
-                          controller: upiIdController,
-                          decoration: InputDecoration(
-                            labelText: 'Enter Your UPI Id',
-                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          SizedBox(height: 10),
+                          TextFormField(
+                            controller: upiIdController,
+                            decoration: InputDecoration(
+                              labelText: 'Enter Your UPI Id',
+                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please Enter Your UPI Id';
+                              }
+                              return null;
+                            },
                           ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Please Enter Your UPI Id';
-                            }
-                            return null;
-                          },
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -170,6 +175,8 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                   transform: Matrix4.translationValues(0.0, -60.0, 0.0),
                   child: ElevatedButton(
                     onPressed: () async {
+                      if (_formKey.currentState!.validate()){
+
                       await drivers
                           .doc(FirebaseAuth.instance.currentUser!.uid)
                           .set({
@@ -184,6 +191,7 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                         'UPIid': upiIdController.text,
                       }).then((value) => print('driver added'));
                       Navigator.pushNamed(context, MyRoute.bidroute);
+                      }
                     },
                     child: Text(
                       'Upload',
@@ -194,12 +202,12 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                       elevation: 2,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(32.0)),
-                      minimumSize: Size(140, 40),
+                      minimumSize: Size(250, 40),
                     ),
                   ),
                 )
 
-                // const SignOutButton(),
+                
               ],
             ),
           ),

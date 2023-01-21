@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
 
@@ -7,12 +8,14 @@ import '../utilis/route.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
+  
 
   @override
   State<MyDrawer> createState() => _MyDrawerState();
 }
 
 class _MyDrawerState extends State<MyDrawer> {
+  final user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -23,10 +26,10 @@ class _MyDrawerState extends State<MyDrawer> {
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                 margin: EdgeInsets.zero,
-                accountName: Text('User Name'),
-                accountEmail: Text('User Email'),
+                accountName: Text(user!.displayName.toString()),
+                accountEmail: Text(user!.email.toString()),
                 currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage('assets/logo.png'),
+                  backgroundImage: NetworkImage(user!.photoURL.toString()),
                 ),
                 otherAccountsPictures: [
                   CircleAvatar(
@@ -83,6 +86,20 @@ class _MyDrawerState extends State<MyDrawer> {
           ListTile(
             leading: Icon(
               size: 30.0,
+              Icons.dashboard_customize,
+              color: Colors.black,
+            ),
+            title: const Text(
+              'Your Bids',
+              style: TextStyle(color: Colors.black, fontSize: 20),
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, MyRoute.allBidPage);
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              size: 30.0,
               Icons.info_outline_rounded,
               color: Colors.black,
             ),
@@ -108,6 +125,7 @@ class _MyDrawerState extends State<MyDrawer> {
               Navigator.pushNamed(context, MyRoute.underroute);
             },
           ),
+          
           ListTile(
             leading: Icon(
               size: 30.0,
