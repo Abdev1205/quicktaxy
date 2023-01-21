@@ -1,32 +1,31 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
 
-
-
 class PostBidPage extends StatefulWidget {
-  final String destination, passengerID, shared, time;
+  final String destination, passengerId, shared, time;
 
   const PostBidPage({
     super.key,
     required this.destination,
-    required this.passengerID,
+    required this.passengerId,
     required this.shared,
     required this.time,
   });
 
   @override
   State<PostBidPage> createState() => _PostBidPageState();
-
 }
 
-class PostData {
-  final String time;
-  final String shared;
-  final String destination;
-  final String passengerID;
+// class PostData {
+//   final String time;
+//   final String shared;
+//   final String destination;
+//   final String passengerID;
 
-  PostData(this.time, this.shared, this.destination, this.passengerID);
-}
+//   PostData(this.time, this.shared, this.destination, this.passengerID);
+// }
 
 class _PostBidPageState extends State<PostBidPage> {
   @override
@@ -69,10 +68,26 @@ class _PostBidPageState extends State<PostBidPage> {
         ],
         automaticallyImplyLeading: true,
       ),
-      body: Column(children: [
-        Text('Hello')
+      body: SingleChildScrollView(
+        child: Column(children: [
+          // Text(widget.destination),
+          // Text(widget.shared),
+          // Text(widget.time),
+          // Text(widget.passengerId),
+          ElevatedButton(onPressed: () async {
+                      await FirebaseFirestore.instance.collection('bids')
+                          .doc(FirebaseAuth.instance.currentUser!.uid)
+                          .set(<String, dynamic>{
+                        'driverId': FirebaseAuth.instance.currentUser!.uid,
+                        'passengerId':widget.passengerId,
+                        'price': 500,
 
-      ]),
+                      }).then((value) => print('bid added'));
+                      
+                    }, child: Text('Bid'))
+
+        ]),
+      ),
     );
   }
 }

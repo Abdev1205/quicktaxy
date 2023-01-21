@@ -86,13 +86,13 @@ class _MyCardState extends State<MyCard> {
                                 minimumSize: const Size(150, 40), //////// HERE
                               ),
                               onPressed: () {
-                                // String time = widget.time.toString();
-                                // String shared = widget.shared.toString();
-                                // String destination =
-                                //     widget.destination.toString();
-                                // String passengerId = widget.passengerID;
+                                String time = widget.time.toString();
+                                String shared = widget.shared.toString();
+                                String destination =
+                                    widget.destination.toString();
+                                String passengerId = widget.passengerID.toString();
                                 Navigator.pushNamed(
-                                    context, MyRoute.bidingPageRoute);
+                                    context, MyRoute.bidingPageRoute,arguments: UserData(time, shared, destination, passengerId));
                                 // return PostBidPage(
                                 //   destination: widget.destination,
                                 //   passengerID: widget.passengerID,
