@@ -6,7 +6,7 @@ import 'package:flutterfire_ui/auth.dart';
 import '../../utilis/route.dart';
 
 class PostBidPage extends StatefulWidget {
-  final String destination, passengerId, shared, time;
+  final String destination, passengerId, shared, time ,phoneNo;
 
   const PostBidPage({
     super.key,
@@ -14,6 +14,7 @@ class PostBidPage extends StatefulWidget {
     required this.passengerId,
     required this.shared,
     required this.time,
+    required this.phoneNo,
   });
 
   @override
@@ -160,15 +161,24 @@ class _PostBidPageState extends State<PostBidPage> {
                       .collection('bids')
                       .add(<String, dynamic>{
                         'driverId': FirebaseAuth.instance.currentUser!.uid,
+                        'driverPhoto':
+                            FirebaseAuth.instance.currentUser!.photoURL,
+                        'driverName':
+                            FirebaseAuth.instance.currentUser!.displayName,
+                        'driverPhone':
+                            FirebaseAuth.instance.currentUser!.phoneNumber,
                         'passengerId': widget.passengerId,
                         'price': priceController.text,
                         'destination': widget.destination,
                         'shared': widget.shared,
-                        'time': widget.time
+                        'time': widget.time,
+                        'accepted':false,
                       })
                       .then((value) => print('bid added'))
                       .then((value) => Navigator.popAndPushNamed(
-                          context, MyRoute.allBidPage));
+                          context, MyRoute.allBidPage))
+                      .then(
+                          (value) => print(FirebaseAuth.instance.currentUser!.phoneNumber));
 
                   // Navigator.pushNamed(context, MyRoute.allBidPage);
                 }

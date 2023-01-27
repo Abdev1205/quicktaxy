@@ -45,9 +45,10 @@ class _postState extends State<post> {
                     document.data()! as Map<String, dynamic>;
                 return MyCard(
                   destination: data['destination'].toString(),
-                  passengerID: data['passengerID'].toString(),
+                  passengerID: data['passengerId'].toString(),
                   shared: data['shared'].toString(),
                   time: data['time'].toString(),
+                  phoneNo: data['phoneNo'].toString(),
                 );
               })
               .toList()

@@ -50,6 +50,7 @@ class MyApp extends StatelessWidget {
                   shared: args.shared,
                   passengerId: args.passengerID,
                   time: args.time,
+                  phoneNo:args.phoneNo,
                 );
               },
             );

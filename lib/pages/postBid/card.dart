@@ -4,14 +4,17 @@ import '../../utilis/route.dart';
 import 'bid.dart';
 
 class MyCard extends StatefulWidget {
-  final String destination, passengerID, shared, time;
+  final String destination, passengerID, shared, time ,phoneNo;
+  
+  
 
   const MyCard({
     super.key,
-    required this.destination ,
-    required this.passengerID ,
-    required this.shared ,
-    required this.time  ,
+    required this.destination,
+    required this.passengerID,
+    required this.shared,
+    required this.time,
+    required this.phoneNo,
   });
 
   @override
@@ -23,8 +26,10 @@ class UserData {
   final String shared;
   final String destination;
   final String passengerID;
+  final String phoneNo;
 
-  UserData(this.time, this.shared, this.destination, this.passengerID);
+  UserData(
+      this.time, this.shared, this.destination, this.passengerID, this.phoneNo);
 }
 
 class _MyCardState extends State<MyCard> {
@@ -90,9 +95,18 @@ class _MyCardState extends State<MyCard> {
                                 String shared = widget.shared.toString();
                                 String destination =
                                     widget.destination.toString();
-                                String passengerId = widget.passengerID.toString();
+                                String passengerId =
+                                    widget.passengerID.toString();
+                                String phoneNo = widget.phoneNo.toString();
                                 Navigator.pushNamed(
-                                    context, MyRoute.bidingPageRoute,arguments: UserData(time, shared, destination, passengerId));
+                                    context, MyRoute.bidingPageRoute,
+                                    arguments: UserData(
+                                      time,
+                                      shared,
+                                      destination,
+                                      passengerId,
+                                      phoneNo,
+                                    ));
                                 // return PostBidPage(
                                 //   destination: widget.destination,
                                 //   passengerID: widget.passengerID,
