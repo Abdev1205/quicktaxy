@@ -49,6 +49,7 @@ class _postState extends State<post> {
                   shared: data['shared'].toString(),
                   time: data['time'].toString(),
                   phoneNo: data['phoneNo'].toString(),
+                  photoURL: data['photoURL'].toString(),
                 );
               })
               .toList()

@@ -4,9 +4,7 @@ import '../../utilis/route.dart';
 import 'bid.dart';
 
 class MyCard extends StatefulWidget {
-  final String destination, passengerID, shared, time ,phoneNo;
-  
-  
+  final String destination, passengerID, shared, time, phoneNo, photoURL;
 
   const MyCard({
     super.key,
@@ -15,6 +13,7 @@ class MyCard extends StatefulWidget {
     required this.shared,
     required this.time,
     required this.phoneNo,
+    required this.photoURL,
   });
 
   @override
@@ -27,9 +26,10 @@ class UserData {
   final String destination;
   final String passengerID;
   final String phoneNo;
+  final String photoURL;
 
-  UserData(
-      this.time, this.shared, this.destination, this.passengerID, this.phoneNo);
+  UserData(this.time, this.shared, this.destination, this.passengerID,
+      this.phoneNo, this.photoURL);
 }
 
 class _MyCardState extends State<MyCard> {
@@ -58,8 +58,7 @@ class _MyCardState extends State<MyCard> {
                       // ignore: prefer_const_constructors
                       CircleAvatar(
                         radius: 70,
-                        backgroundImage: const NetworkImage(
-                            'https://thumbs.dreamstime.com/b/portrait-young-smiling-woman-black-dress-white-background-i-fashion-model-isolated-isolated-34626081.jpg'),
+                        backgroundImage: NetworkImage(widget.photoURL),
                       ),
                       SizedBox(
                         child: Column(children: [
@@ -98,6 +97,7 @@ class _MyCardState extends State<MyCard> {
                                 String passengerId =
                                     widget.passengerID.toString();
                                 String phoneNo = widget.phoneNo.toString();
+                                String photoURL = widget.photoURL.toString();
                                 Navigator.pushNamed(
                                     context, MyRoute.bidingPageRoute,
                                     arguments: UserData(
@@ -106,6 +106,7 @@ class _MyCardState extends State<MyCard> {
                                       destination,
                                       passengerId,
                                       phoneNo,
+                                      photoURL,
                                     ));
                                 // return PostBidPage(
                                 //   destination: widget.destination,

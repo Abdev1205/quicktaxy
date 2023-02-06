@@ -173,6 +173,7 @@ class _PostBidPageState extends State<PostBidPage> {
                         'shared': widget.shared,
                         'time': widget.time,
                         'accepted':false,
+                        
                       })
                       .then((value) => print('bid added'))
                       .then((value) => Navigator.popAndPushNamed(

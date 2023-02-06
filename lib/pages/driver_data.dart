@@ -189,6 +189,8 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                         'Seats': seatingCapacityController.text,
                         'TaxiNo': vehicleNoController.text,
                         'UPIid': upiIdController.text,
+                        'rating':0.0,
+                        'n':0.0,
                       }).then((value) => print('driver added'));
                       Navigator.pushNamed(context, MyRoute.bidroute);
                       }
