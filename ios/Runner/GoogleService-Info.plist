@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>963656261848-v7r3vq1v6haupv0l1mdrmsf56ktnua60.apps.googleusercontent.com</string>
+	<string>558737185486-754cvktqvmn6b9d72fsduc3rn689nvqv.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.963656261848-v7r3vq1v6haupv0l1mdrmsf56ktnua60</string>
+	<string>com.googleusercontent.apps.558737185486-754cvktqvmn6b9d72fsduc3rn689nvqv</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>558737185486-3i8d63a6ufvhljvlq661sm28r1bf7m9i.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBqLWsqFjYAdGyihKTahMRDQMo0N6NVjAs</string>
+	<string>AIzaSyDEH6fphIcwgy3YCQBoGEvlAa86puUTCF4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>963656261848</string>
+	<string>558737185486</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.complete</string>
+	<string>com.example.newDriver</string>
 	<key>PROJECT_ID</key>
-	<string>flutterfire-ui-codelab</string>
+	<string>authentication-system-d584b</string>
 	<key>STORAGE_BUCKET</key>
-	<string>flutterfire-ui-codelab.appspot.com</string>
+	<string>authentication-system-d584b.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:963656261848:ios:d9e01cfe8b675dfcb237ad</string>
+	<string>1:558737185486:ios:f0a6604b108c11345ace9f</string>
 </dict>
 </plist>
