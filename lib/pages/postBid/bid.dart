@@ -6,7 +6,7 @@ import 'package:flutterfire_ui/auth.dart';
 import '../../utilis/route.dart';
 
 class PostBidPage extends StatefulWidget {
-  final String destination, passengerId, shared, time ,phoneNo;
+  final String destination, passengerId, shared, time, phoneNo;
 
   const PostBidPage({
     super.key,
@@ -44,7 +44,7 @@ class _PostBidPageState extends State<PostBidPage> {
         ),
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.person,
               color: Colors.black,
               size: 30.0,
@@ -131,13 +131,13 @@ class _PostBidPageState extends State<PostBidPage> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: priceController,
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Enter Your Bid Price',
                   floatingLabelBehavior: FloatingLabelBehavior.auto,
                   border: OutlineInputBorder(),
@@ -157,6 +157,7 @@ class _PostBidPageState extends State<PostBidPage> {
             ElevatedButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
+                  int price = int.parse(priceController.text);
                   await FirebaseFirestore.instance
                       .collection('bids')
                       .add(<String, dynamic>{
@@ -168,18 +169,17 @@ class _PostBidPageState extends State<PostBidPage> {
                         'driverPhone':
                             FirebaseAuth.instance.currentUser!.phoneNumber,
                         'passengerId': widget.passengerId,
-                        'price': priceController.text,
+                        'price': price,
                         'destination': widget.destination,
                         'shared': widget.shared,
                         'time': widget.time,
-                        'accepted':false,
-                        
+                        'accepted': false,
                       })
                       .then((value) => print('bid added'))
                       .then((value) => Navigator.popAndPushNamed(
                           context, MyRoute.allBidPage))
-                      .then(
-                          (value) => print(FirebaseAuth.instance.currentUser!.phoneNumber));
+                      .then((value) => print(
+                          FirebaseAuth.instance.currentUser!.phoneNumber));
 
                   // Navigator.pushNamed(context, MyRoute.allBidPage);
                 }
