@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
 import 'package:new_driver/all_bids.dart';
@@ -98,22 +99,31 @@ class _PostBidPageState extends State<PostBidPage> {
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         int price = int.parse(priceController.text);
-                        await FirebaseFirestore.instance
-                            .collection('bids')
-                            .add(<String, dynamic>{
-                          'driverId': FirebaseAuth.instance.currentUser!.uid,
-                          'driverPhoto':
-                              FirebaseAuth.instance.currentUser!.photoURL,
-                          'driverName':
-                              FirebaseAuth.instance.currentUser!.displayName,
-                          'driverPhone':
-                              FirebaseAuth.instance.currentUser!.phoneNumber,
-                          'passengerId': widget.userData.passengerID,
-                          'price': price,
-                          'destination': widget.userData.destination,
-                          'shared': widget.userData.shared,
-                          'time': widget.userData.time,
-                          'accepted': false,
+                        FirebaseFirestore.instance
+                            .collection('drivers')
+                            .doc(FirebaseAuth.instance.currentUser!.uid)
+                            .get()
+                            .then((value) {
+                          return value.data() == null
+                              ? ''
+                              : value.data()!['PhNo'].toString();
+                        }).then((phoneNo) async {
+                          await FirebaseFirestore.instance
+                              .collection('bids')
+                              .add(<String, dynamic>{
+                            'driverId': FirebaseAuth.instance.currentUser!.uid,
+                            'driverPhoto':
+                                FirebaseAuth.instance.currentUser!.photoURL,
+                            'driverName':
+                                FirebaseAuth.instance.currentUser!.displayName,
+                            'driverPhone': phoneNo,
+                            'passengerId': widget.userData.passengerID,
+                            'price': price,
+                            'destination': widget.userData.destination,
+                            'shared': widget.userData.shared,
+                            'time': widget.userData.time,
+                            'accepted': false,
+                          });
                         }).then((_) => Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
                                   builder: (context) {
