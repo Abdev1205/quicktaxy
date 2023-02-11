@@ -63,17 +63,23 @@ class _PostBidPageState extends State<PostBidPage> {
         child: Form(
           key: _formKey,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(10,20,10,0),
+            padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
             child: Column(
               children: [
-                MyListTile(userDetails: widget.userData, onTapEnabled: false, showDeleteButton: false,),
+                MyListTile(
+                  userDetails: widget.userData,
+                  onTapEnabled: false,
+                  showDeleteButton: false,
+                ),
                 const SizedBox(height: 10),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: TextFormField(
+                    style: const TextStyle(fontSize: 20),
                     controller: priceController,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.currency_rupee_rounded),
                       labelText: 'Enter Your Bid Price',
                       floatingLabelBehavior: FloatingLabelBehavior.auto,
                       border: OutlineInputBorder(),
@@ -86,44 +92,48 @@ class _PostBidPageState extends State<PostBidPage> {
                     },
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      int price = int.parse(priceController.text);
-                      await FirebaseFirestore.instance
-                          .collection('bids')
-                          .add(<String, dynamic>{
-                        'driverId': FirebaseAuth.instance.currentUser!.uid,
-                        'driverPhoto':
-                            FirebaseAuth.instance.currentUser!.photoURL,
-                        'driverName':
-                            FirebaseAuth.instance.currentUser!.displayName,
-                        'driverPhone':
-                            FirebaseAuth.instance.currentUser!.phoneNumber,
-                        'passengerId': widget.userData.passengerID,
-                        'price': price,
-                        'destination': widget.userData.destination,
-                        'shared': widget.userData.shared,
-                        'time': widget.userData.time,
-                        'accepted': false,
-                      }).then((_) => Navigator.of(context).pushAndRemoveUntil(
-                                  MaterialPageRoute(
-                                builder: (context) {
-                                  return const AllBidPage();
-                                },
-                              ), (route) => route.isFirst));
-                    }
-                  },
-                  // ignore: sort_child_properties_last
-                  child: const Text(
-                    'Bid',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
-                    minimumSize: const Size(250, 40),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        int price = int.parse(priceController.text);
+                        await FirebaseFirestore.instance
+                            .collection('bids')
+                            .add(<String, dynamic>{
+                          'driverId': FirebaseAuth.instance.currentUser!.uid,
+                          'driverPhoto':
+                              FirebaseAuth.instance.currentUser!.photoURL,
+                          'driverName':
+                              FirebaseAuth.instance.currentUser!.displayName,
+                          'driverPhone':
+                              FirebaseAuth.instance.currentUser!.phoneNumber,
+                          'passengerId': widget.userData.passengerID,
+                          'price': price,
+                          'destination': widget.userData.destination,
+                          'shared': widget.userData.shared,
+                          'time': widget.userData.time,
+                          'accepted': false,
+                        }).then((_) => Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                  builder: (context) {
+                                    return const AllBidPage();
+                                  },
+                                ), (route) => route.isFirst));
+                      }
+                    },
+                    // ignore: sort_child_properties_last
+                    child: const Text(
+                      'Bid',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(32.0)),
+                      minimumSize: const Size(250, 40),
+                    ),
                   ),
                 )
               ],
