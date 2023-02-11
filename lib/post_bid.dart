@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterfire_ui/auth.dart';
 import 'package:new_driver/all_bids.dart';
 import 'package:new_driver/global_utils.dart';
 import 'package:new_driver/post_list_screen/post_list_utils.dart';
