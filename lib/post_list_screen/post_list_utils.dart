@@ -20,27 +20,25 @@ class MyListTile extends StatefulWidget {
       this.tileColor = Colors.black,
       this.textColor = Colors.white,
       this.fallbackImg = 'assets/GIFs/unknown.gif',
-      this.isBidAccepted = false
-      });
+      this.isBidAccepted = false});
 
   @override
   State<MyListTile> createState() => _MyListTileState();
 }
 
 class _MyListTileState extends State<MyListTile> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: ListTile(
-        textColor:  widget.textColor,
+        textColor: widget.textColor,
         tileColor: widget.tileColor,
         trailing: widget.showDeleteButton && !widget.isBidAccepted
             ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                InkResponse(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkResponse(
                     splashColor: Colors.red,
                     child: const Icon(
                       Icons.delete,
@@ -56,11 +54,10 @@ class _MyListTileState extends State<MyListTile> {
                               .delete());
                     },
                   ),
-              ],
-            )
+                ],
+              )
             : null,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         onTap: widget.onTapEnabled
             ? () {
                 FirebaseFirestore.instance
@@ -83,8 +80,7 @@ class _MyListTileState extends State<MyListTile> {
                                 padding: const EdgeInsets.only(top: 8.0),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisSize: MainAxisSize.min,
                                   children: const [
                                     Text('You have excceded the bid limit'),
@@ -97,22 +93,25 @@ class _MyListTileState extends State<MyListTile> {
               }
             : null,
         leading: CircleAvatar(
-          radius: 30,
+          radius: 25,
           foregroundImage: NetworkImage(widget.userDetails.photoURL!),
           onForegroundImageError: (_, __) {},
           backgroundImage: AssetImage(widget.fallbackImg),
         ),
-        title: Text('Destination : ${widget.userDetails.destination}'),
-        isThreeLine: true,
+        title: Text(
+          widget.userDetails.destination,
+          softWrap: false,
+          maxLines: 1,
+          overflow: TextOverflow.fade,
+        ),
         // dense: true,
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             widget.userDetails.price == null
                 ? Container()
-                : Text('Price : ₹${widget.userDetails.price}'),
-            Text('Time : ${widget.userDetails.time}'),
-            Text('Shared : ${widget.userDetails.shared ? 'Yes' : 'No'}'),
+                : Text('₹${widget.userDetails.price}'),
+            Text('${widget.userDetails.time} • ${widget.userDetails.shared ? 'Shared' : 'Single'}'),
           ],
         ),
       ),

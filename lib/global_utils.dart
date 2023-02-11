@@ -110,7 +110,7 @@ class _MyDrawerState extends State<MyDrawer> {
             ),
             child: SafeArea(
               child: UserAccountsDrawerHeader(
-                margin: EdgeInsets.all(8.0),
+                margin: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(10)),
