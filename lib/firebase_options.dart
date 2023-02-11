@@ -63,7 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '558737185486',
     projectId: 'authentication-system-d584b',
     storageBucket: 'authentication-system-d584b.appspot.com',
-    androidClientId: '558737185486-3i8d63a6ufvhljvlq661sm28r1bf7m9i.apps.googleusercontent.com',
+    androidClientId: '558737185486-0ivtmlhktr3890d8s4kde8sorvhjcv7r.apps.googleusercontent.com',
     iosClientId: '558737185486-754cvktqvmn6b9d72fsduc3rn689nvqv.apps.googleusercontent.com',
     iosBundleId: 'com.example.newDriver',
   );

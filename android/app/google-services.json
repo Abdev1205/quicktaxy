@@ -7,74 +7,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:558737185486:android:20d408bc8938c75e5ace9f",
-        "android_client_info": {
-          "package_name": "com.example.complete"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "558737185486-3i8d63a6ufvhljvlq661sm28r1bf7m9i.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.complete",
-            "certificate_hash": "61d11bef16577b05a16a3a35cfcab11962608b75"
-          }
-        },
-        {
-          "client_id": "558737185486-8d9hmddk5eea4nd4f7oaug2ki0c4fssj.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.complete",
-            "certificate_hash": "14caa91a325d758564705aedf8ddfe7fafd99ab0"
-          }
-        },
-        {
-          "client_id": "558737185486-qelr1vr16k71an0va57kbb5srdfdp9mh.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.complete",
-            "certificate_hash": "7d4fa33b532e6066ef58790ab89351e4688a1756"
-          }
-        },
-        {
-          "client_id": "558737185486-viefi7ml5bm3qrhnese34csgoepj0rsf.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.complete",
-            "certificate_hash": "76c52e76dc9680c3d40790802ce5cdeaed983e75"
-          }
-        },
-        {
-          "client_id": "558737185486-0qh45d6q677i493cq6io7qen8ff4gv1d.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDCMACrf9XmHoIiBeABE678vCDO8COrV_c"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "558737185486-0qh45d6q677i493cq6io7qen8ff4gv1d.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "558737185486-c1qv0fmsbs9fccfgnignv6fl1vtrukif.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.quickTaxi"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:558737185486:android:707ff57e77843a165ace9f",
         "android_client_info": {
           "package_name": "com.example.new_driver"
@@ -82,6 +14,30 @@
       },
       "oauth_client": [
         {
+          "client_id": "558737185486-37n8lbp1015d4aqebb664ufr2b63k42d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.new_driver",
+            "certificate_hash": "61d11bef16577b05a16a3a35cfcab11962608b75"
+          }
+        },
+        {
+          "client_id": "558737185486-fae1o4dl2185882gtcdi9ha9inar4n9i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.new_driver",
+            "certificate_hash": "7d4fa33b532e6066ef58790ab89351e4688a1756"
+          }
+        },
+        {
+          "client_id": "558737185486-uav0o807sesu72tvi68i0bt8dbt11nob.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.new_driver",
+            "certificate_hash": "14caa91a325d758564705aedf8ddfe7fafd99ab0"
+          }
+        },
+        {
           "client_id": "558737185486-0qh45d6q677i493cq6io7qen8ff4gv1d.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -99,10 +55,10 @@
               "client_type": 3
             },
             {
-              "client_id": "558737185486-c1qv0fmsbs9fccfgnignv6fl1vtrukif.apps.googleusercontent.com",
+              "client_id": "558737185486-754cvktqvmn6b9d72fsduc3rn689nvqv.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.quickTaxi"
+                "bundle_id": "com.example.newDriver"
               }
             }
           ]
@@ -117,6 +73,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "558737185486-0ivtmlhktr3890d8s4kde8sorvhjcv7r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quick_taxi",
+            "certificate_hash": "61d11bef16577b05a16a3a35cfcab11962608b75"
+          }
+        },
         {
           "client_id": "558737185486-ecad4j1oap84mu6nl0r6gim8421cs9d9.apps.googleusercontent.com",
           "client_type": 1,
@@ -151,10 +115,10 @@
               "client_type": 3
             },
             {
-              "client_id": "558737185486-c1qv0fmsbs9fccfgnignv6fl1vtrukif.apps.googleusercontent.com",
+              "client_id": "558737185486-754cvktqvmn6b9d72fsduc3rn689nvqv.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.quickTaxi"
+                "bundle_id": "com.example.newDriver"
               }
             }
           ]
