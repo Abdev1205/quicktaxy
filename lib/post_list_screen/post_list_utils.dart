@@ -11,6 +11,7 @@ class MyListTile extends StatefulWidget {
   final bool showDeleteButton;
   final Color tileColor, textColor;
   final String fallbackImg;
+  final bool isBidAccepted;
   const MyListTile(
       {super.key,
       required this.userDetails,
@@ -18,7 +19,8 @@ class MyListTile extends StatefulWidget {
       required this.showDeleteButton,
       this.tileColor = Colors.black,
       this.textColor = Colors.white,
-      this.fallbackImg = 'assets/GIFs/unknown.gif'
+      this.fallbackImg = 'assets/GIFs/unknown.gif',
+      this.isBidAccepted = false
       });
 
   @override
@@ -34,7 +36,7 @@ class _MyListTileState extends State<MyListTile> {
       child: ListTile(
         textColor:  widget.textColor,
         tileColor: widget.tileColor,
-        trailing: widget.showDeleteButton
+        trailing: widget.showDeleteButton && !widget.isBidAccepted
             ? Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

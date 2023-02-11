@@ -54,6 +54,7 @@ class _AllBidPageState extends State<AllBidPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       MyListTile(
+                        isBidAccepted: data['accepted'],
                         fallbackImg: data['accepted']
                             ? 'assets/accepted.png'
                             : 'assets/GIFs/waiting.gif',

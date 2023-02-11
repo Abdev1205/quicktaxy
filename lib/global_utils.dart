@@ -109,76 +109,75 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
             ),
             child: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: UserAccountsDrawerHeader(
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(10)),
-                  otherAccountsPictures: [
-                    CircleAvatar(
-                      child: IconButton(
-                          onPressed: () => FlutterFireUIAuth.signOut(
-                                context: context,
-                                auth: FirebaseAuth.instance,
-                              ),
-                          icon: const Icon(Icons.logout)),
-                    ),
-                  ],
-                  accountName: Text(user.displayName.toString()),
-                  accountEmail: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(user.email.toString()),
-                      StreamBuilder(
-                          stream: FirebaseFirestore.instance
-                              .collection('drivers')
-                              .doc(FirebaseAuth.instance.currentUser!.uid)
-                              .snapshots(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasError) {
-                              return const Text('Something went wrong !');
-                            }
-                            if (snapshot.connectionState ==
-                                    ConnectionState.waiting ||
-                                !snapshot.hasData) {
-                              return const LinearProgressIndicator();
-                            }
-                            return Row(
-                              children: [
-                                RatingBar(
-                                  itemSize: 15,
-                                  initialRating:
-                                      snapshot.data!.data()!['rating'],
-                                  ignoreGestures: true,
-                                  allowHalfRating: true,
-                                  ratingWidget: RatingWidget(
-                                    full: const Icon(
-                                      Icons.star,
-                                      color: Colors.pink,
-                                    ),
-                                    half: const Icon(
-                                      Icons.star_half,
-                                      color: Colors.pink,
-                                    ),
-                                    empty: const Icon(
-                                      Icons.star_border,
-                                      color: Colors.pink,
-                                    ),
+              child: UserAccountsDrawerHeader(
+                margin: EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(10)),
+                otherAccountsPictures: [
+                  CircleAvatar(
+                    child: IconButton(
+                        onPressed: () => FlutterFireUIAuth.signOut(
+                              context: context,
+                              auth: FirebaseAuth.instance,
+                            ),
+                        icon: const Icon(Icons.logout)),
+                  ),
+                ],
+                accountName: Text(user.displayName.toString()),
+                accountEmail: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(user.email.toString()),
+                    StreamBuilder(
+                        stream: FirebaseFirestore.instance
+                            .collection('drivers')
+                            .doc(FirebaseAuth.instance.currentUser!.uid)
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasError) {
+                            return const Text('Something went wrong !');
+                          }
+                          if (snapshot.connectionState ==
+                                  ConnectionState.waiting ||
+                              !snapshot.hasData) {
+                            return const LinearProgressIndicator();
+                          }
+                          return Row(
+                            children: [
+                              RatingBar(
+                                itemSize: 15,
+                                initialRating:
+                                    snapshot.data!.data()!['rating'],
+                                ignoreGestures: true,
+                                allowHalfRating: true,
+                                ratingWidget: RatingWidget(
+                                  full: const Icon(
+                                    Icons.star,
+                                    color: Colors.pink,
                                   ),
-                                  onRatingUpdate: (value) => {},
+                                  half: const Icon(
+                                    Icons.star_half,
+                                    color: Colors.pink,
+                                  ),
+                                  empty: const Icon(
+                                    Icons.star_border,
+                                    color: Colors.pink,
+                                  ),
                                 ),
-                                Text(' • ${snapshot.data!.data()!['n']}')
-                              ],
-                            );
-                          })
-                    ],
-                  ),
-                  currentAccountPicture: CircleAvatar(
-                    foregroundImage: NetworkImage(user.photoURL.toString()),
-                    onForegroundImageError: (_, __) {},
-                  ),
+                                onRatingUpdate: (value) => {},
+                              ),
+                              Text(' • ${snapshot.data!.data()!['n'].toInt()}')
+                            ],
+                          );
+                        })
+                  ],
+                ),
+                currentAccountPicture: CircleAvatar(
+                  foregroundImage: NetworkImage(user.photoURL.toString()),
+                  onForegroundImageError: (_, __) {},
+                  backgroundImage: const AssetImage('assets/GIFs/unknown.gif'),
                 ),
               ),
             ),
