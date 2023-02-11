@@ -30,34 +30,34 @@ class _PostBidPageState extends State<PostBidPage> {
           'Enter Bid',
           style: TextStyle(fontSize: 20),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.person,
-              size: 30.0,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<ProfileScreen>(
-                  builder: (context) => ProfileScreen(
-                    appBar: AppBar(
-                      title: const Text('User Profile'),
-                    ),
-                    actions: [
-                      SignedOutAction((context) {
-                        Navigator.popUntil(context, (route) => route.isFirst);
-                      })
-                    ],
-                    children: const [
-                      Divider(),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(
+        //       Icons.person,
+        //       size: 30.0,
+        //     ),
+        //     onPressed: () {
+        //       Navigator.push(
+        //         context,
+        //         MaterialPageRoute<ProfileScreen>(
+        //           builder: (context) => ProfileScreen(
+        //             appBar: AppBar(
+        //               title: const Text('User Profile'),
+        //             ),
+        //             actions: [
+        //               SignedOutAction((context) {
+        //                 Navigator.popUntil(context, (route) => route.isFirst);
+        //               })
+        //             ],
+        //             children: const [
+        //               Divider(),
+        //             ],
+        //           ),
+        //         ),
+        //       );
+        //     },
+        //   ),
+        // ],
       ),
       body: SingleChildScrollView(
         child: Form(
