@@ -1,6 +1,6 @@
 {
-    "name": "complete",
-    "short_name": "complete",
+    "name": "new_driver",
+    "short_name": "new_driver",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
